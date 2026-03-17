@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ガチャゲーム</title>
+
+<style>
+body{
+    font-family: sans-serif;
+    background: linear-gradient(135deg,#4facfe,#00f2fe);
+    text-align:center;
+    color:white;
+    margin-top:100px;
+}
+
+h1{
+    font-size:40px;
+}
+
+#result{
+    margin:40px;
+    font-size:28px;
+    min-height:60px;
+}
+
+button{
+    font-size:24px;
+    padding:15px 40px;
+    border:none;
+    border-radius:10px;
+    background:#ffcc00;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+.card{
+    margin-top:20px;
+    padding:20px;
+    border-radius:15px;
+    display:inline-block;
+    font-size:22px;
+}
+
+.common{background:#bbbbbb;}
+.rare{background:#4caf50;}
+.super{background:#2196f3;}
+.ultra{background:#9c27b0;}
+.legend{background:gold;color:black;}
+
+</style>
+</head>
+
+<body>
+
+<h1>🎰 ガチャゲーム</h1>
+
+<button onclick="gacha()">ガチャを引く！</button>
+
+<div id="result"></div>
+
+<script>
+
+function gacha(){
+
+    const rand = Math.random()*100;
+    let result;
+
+    if(rand < 50){
+        result = {
+            name:"スライム",
+            rarity:"⭐",
+            class:"common"
+        };
+    }
+    else if(rand < 80){
+        result = {
+            name:"ナイト",
+            rarity:"⭐⭐",
+            class:"rare"
+        };
+    }
+    else if(rand < 93){
+        result = {
+            name:"ドラゴン",
+            rarity:"⭐⭐⭐",
+            class:"super"
+        };
+    }
+    else if(rand < 99){
+        result = {
+            name:"フェニックス",
+            rarity:"⭐⭐⭐⭐",
+            class:"ultra"
+        };
+    }
+    else{
+        result = {
+            name:"伝説の勇者",
+            rarity:"⭐⭐⭐⭐⭐",
+            class:"legend"
+        };
+    }
+
+    document.getElementById("result").innerHTML =
+        `<div class="card ${result.class}">
+        ${result.rarity}<br>
+        ${result.name} をゲット！
+        </div>`;
+}
+
+</script>
+
+</body>
+</html>
